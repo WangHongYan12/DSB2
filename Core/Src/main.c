@@ -130,6 +130,7 @@ int main(void)
     Wind_Init();
     Wind_SetDirection(WIND_CCW);
     /* 开机旋律 */
+    //测试：github推送1
   /* USER CODE END 2 */
 
   /* Infinite loop */
