@@ -16,6 +16,8 @@
 #include <stdint.h>
 #include <stdbool.h>
 
+#define SERVO_1 TIM_CHANNEL_1
+#define SERVO_2 TIM_CHANNEL_2
 /**
  * @brief 舵机初始化，必须调用一次以启动 PWM
  */
@@ -26,6 +28,8 @@ void servo_init(void);
  * @param channel   TIM_CHANNEL_1 或 TIM_CHANNEL_2
  * @param angle_deg 目标角度，范围 0–270
  */
+
+
 void servo_set_angle(uint32_t channel, uint16_t angle_deg);
 
 #endif /* __SERVO_CONTROL_H */

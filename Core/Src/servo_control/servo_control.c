@@ -14,6 +14,7 @@ extern TIM_HandleTypeDef htim4;
 #define SERVO_PULSE_MAX   2500U    /* 最大时脉宽 2.5 ms */
 #define SERVO_ANGLE_MAX   270U     /* 舵机最大转角 270° */
 
+
 /**
  * @brief 启动 TIM4 CH1/CH2 PWM 输出
  */

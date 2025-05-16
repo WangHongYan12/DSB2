@@ -17,8 +17,8 @@
 char buffer[40];
 void process_0(void){
     Buzzer_PlayMelody(MELODY_STARTUP);
-    servo_set_angle(TIM_CHANNEL_1, 50);
-    servo_set_angle(TIM_CHANNEL_2, 225);
+    servo_set_angle(SERVO_1, 50);
+    servo_set_angle(SERVO_2, 225);
     while(1){
     OLED_NewFrame();
     OLED_PrintString(4, 0, "电赛智能车 鸭敏电组", &font12x12, OLED_COLOR_REVERSED);
