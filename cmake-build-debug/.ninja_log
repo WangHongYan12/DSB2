@@ -81,3 +81,9 @@
 1815	2255	7690722128895188	CMakeFiles/DSB2.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj	81a31c105751a66
 1760	2383	7690722130160505	CMakeFiles/DSB2.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj	f540e7cb61654eb0
 2383	2773	7690722133351034	DSB2.elf	228570ce388e615b
+57	460	7691165870493718	CMakeFiles/DSB2.elf.dir/Core/Src/servo_control/servo_control.c.obj	ec13a3f037affaf0
+52	507	7691165871024646	CMakeFiles/DSB2.elf.dir/Core/Src/process.c.obj	f36e4bc13b142e76
+40	528	7691165871219938	CMakeFiles/DSB2.elf.dir/Core/Src/main.c.obj	bc115d4294e03866
+529	943	7691165874583758	DSB2.elf	228570ce388e615b
+28	377	7691166710822983	CMakeFiles/DSB2.elf.dir/Core/Src/main.c.obj	bc115d4294e03866
+378	749	7691166713931210	DSB2.elf	228570ce388e615b

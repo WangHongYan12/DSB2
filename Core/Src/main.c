@@ -129,6 +129,7 @@ int main(void)
     LT_UART5_Init();
     Wind_Init();
     Wind_SetDirection(WIND_CCW);
+    Wind_SetSpeed(0);
     /* 开机旋律 */
     //测试：github推送1
   /* USER CODE END 2 */
