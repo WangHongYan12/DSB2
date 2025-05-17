@@ -1,6 +1,6 @@
 /**
  * @file    vision_parser.h
- * @brief   声明视觉数据帧的解析接口（适用于 STM32 + USART3）
+ * @brief   声明视觉数据帧的解析接口
  */
 
 #ifndef __VISION_PARSER_H__

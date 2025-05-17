@@ -1,7 +1,7 @@
 /**
  * @file    vision_parser.c
  * @brief   实现视觉数据帧的串口接收与解析（通过 USART3）
- * @author
+ * @author  王泓俨
  * @version 1.0
  */
 
