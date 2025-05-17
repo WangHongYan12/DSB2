@@ -31,6 +31,7 @@
 #include "yaw_pid_control/yaw_pid_control.h"
 #include "yaw_pid_control/yaw_ramp.h"
 #include "line_follow_pid/line_follow_pid.h"
+#include "vision_parser/vision_parser.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -347,6 +348,8 @@ void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
     else if (huart->Instance == UART4) {
         IMU_UART4_RxISR();
     }
+    else if(huart->Instance == USART3)
+        Vision_RxISR();
 }
 
 

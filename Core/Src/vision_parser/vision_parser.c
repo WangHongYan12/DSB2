@@ -45,25 +45,26 @@ void vision_uart_init(void) {
  * @brief 串口接收中断回调函数（由 HAL 调用）
  * @param huart 串口句柄
  */
-void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart) {
-    if (huart->Instance == USART3) {
-        if (vision_uart_rx_byte == VISION_FRAME_HEAD) {
-            vision_frame_index = 0;
-            vision_frame_buffer[vision_frame_index++] = vision_uart_rx_byte;
-        } else if (vision_frame_index > 0 && vision_frame_index < VISION_FRAME_LENGTH) {
-            vision_frame_buffer[vision_frame_index++] = vision_uart_rx_byte;
+void Vision_RxISR(void) {
 
-            if (vision_frame_index == VISION_FRAME_LENGTH) {
-                if (vision_frame_buffer[VISION_FRAME_LENGTH - 1] == VISION_FRAME_TAIL) {
-                    vision_frame_ready = 1;
-                }
-                vision_frame_index = 0;
+    if (vision_uart_rx_byte == VISION_FRAME_HEAD) {
+        vision_frame_index = 0;
+        vision_frame_buffer[vision_frame_index++] = vision_uart_rx_byte;
+    } else if (vision_frame_index > 0 && vision_frame_index < VISION_FRAME_LENGTH) {
+        vision_frame_buffer[vision_frame_index++] = vision_uart_rx_byte;
+
+        if (vision_frame_index == VISION_FRAME_LENGTH) {
+            if (vision_frame_buffer[VISION_FRAME_LENGTH - 1] == VISION_FRAME_TAIL) {
+                vision_frame_ready = 1;
+                vision_frame_parse();
             }
+            vision_frame_index = 0;
         }
+    }
 
         // 继续下一字节接收
-        HAL_UART_Receive_IT(&huart3, &vision_uart_rx_byte, 1);
-    }
+         HAL_UART_Receive_IT(&huart3, &vision_uart_rx_byte, 1);
+
 }
 
 /**

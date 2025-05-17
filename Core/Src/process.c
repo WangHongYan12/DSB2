@@ -10,10 +10,31 @@
 #include "key/key.h"
 #include "servo_control/servo_control.h"
 #include "line_follow_pid/line_follow_pid.h"
+#include "tim.h"
+#include "vision_parser/vision_parser.h"
+#include "wind/wind.h"
 
 //
 // Created by 王泓俨 on 25-5-15.
 //
+void process_Init(void){
+    HAL_TIM_Base_Start_IT(&htim6);
+    HAL_TIM_Base_Start_IT(&htim7);
+    HAL_Delay(200);
+    OLED_Init();
+    MotorFrame_UART2_TxInit();
+    Buzzer_Init();
+    servo_init();
+    MotorRx_Init();          /* ① 启动单字节接收 */
+    Key_Init();             /* ← 初始化按键驱动（必须在 GPIO 后） */
+    IMU_UART4_Init();
+    LT_UART5_Init();
+    vision_uart_init();
+    Wind_Init();
+    Wind_SetDirection(WIND_CCW);
+    Wind_SetSpeed(0);
+}
+
 char buffer[40];
 void process_0(void){
     Buzzer_PlayMelody(MELODY_STARTUP);

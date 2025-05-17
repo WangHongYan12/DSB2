@@ -40,6 +40,7 @@
 #include "line_follow_pid/line_follow_pid.h"
 #include "servo_control/servo_control.h"
 #include "process.h"
+#include "vision_parser/vision_parser.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -116,22 +117,7 @@ int main(void)
   MX_TIM3_Init();
   MX_TIM2_Init();
   /* USER CODE BEGIN 2 */
-    HAL_TIM_Base_Start_IT(&htim6);
-    HAL_TIM_Base_Start_IT(&htim7);
-    HAL_Delay(200);
-    OLED_Init();
-    MotorFrame_UART2_TxInit();
-    Buzzer_Init();
-    servo_init();
-    MotorRx_Init();          /* ① 启动单字节接收 */
-    Key_Init();             /* ← 初始化按键驱动（必须在 GPIO 后） */
-    IMU_UART4_Init();
-    LT_UART5_Init();
-    Wind_Init();
-    Wind_SetDirection(WIND_CCW);
-    Wind_SetSpeed(0);
-    /* 开机旋律 */
-    //测试：github推送1
+    process_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -141,20 +127,6 @@ int main(void)
 
   while (1)
   {
-
-
-
-      if(Key_GetClick(KEY1)){
-          yaw_pid_control_on = true;}
-      if (Key_GetClick(KEY2)){
-          IMU_ResetHeading();}
-      if (Key_GetClick(KEY3)){
-           }
-      if (Key_GetClick(KEY4)){
-          yaw_pid_control_on = true;
-          break; }
-
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

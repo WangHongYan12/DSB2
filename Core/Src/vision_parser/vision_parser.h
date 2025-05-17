@@ -38,6 +38,7 @@ void vision_uart_init(void);
  */
 void vision_frame_parse(void);
 
+void Vision_RxISR(void);
 #ifdef __cplusplus
 }
 #endif
