@@ -14,6 +14,6 @@
 -- Detecting CXX compile features
 -- Detecting CXX compile features - done
 -- Minimal optimization, debug info included
--- Configuring done (2.5s)
+-- Configuring done (2.2s)
 -- Generating done (0.1s)
 -- Build files have been written to: F:/Project/DSB2/cmake-build-debug

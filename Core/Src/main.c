@@ -41,6 +41,7 @@
 #include "servo_control/servo_control.h"
 #include "process.h"
 #include "vision_parser/vision_parser.h"
+#include "move_while_rotating/move_while_rotating.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -116,6 +117,7 @@ int main(void)
   MX_TIM4_Init();
   MX_TIM3_Init();
   MX_TIM2_Init();
+  MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
     process_Init();
   /* USER CODE END 2 */
@@ -123,8 +125,18 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
     process_0();
-    process_1();
+    //process_1();
 
+    char buffer[20];
+    yaw_ramp_set_goal(18000,true);
+    for(int i = 0 ; i < 64 ; i+=1){
+        SetMoveParameters(-i,0,0,false,true);
+        HAL_Delay(1);
+    }
+    while(yaw_ramp_is_active());
+    SetMoveParameters(0,0,0,false,true);
+    HAL_Delay(20);
+    SetMoveParameters(0,0,0,false,false);
   while (1)
   {
     /* USER CODE END WHILE */

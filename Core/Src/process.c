@@ -13,6 +13,7 @@
 #include "tim.h"
 #include "vision_parser/vision_parser.h"
 #include "wind/wind.h"
+#include "move_while_rotating/move_while_rotating.h"
 
 //
 // Created by 王泓俨 on 25-5-15.
@@ -20,6 +21,8 @@
 void process_Init(void){
     HAL_TIM_Base_Start_IT(&htim6);
     HAL_TIM_Base_Start_IT(&htim7);
+    HAL_TIM_Base_Start_IT(&htim5);
+
     HAL_Delay(200);
     OLED_Init();
     MotorFrame_UART2_TxInit();
@@ -33,11 +36,12 @@ void process_Init(void){
     Wind_Init();
     Wind_SetDirection(WIND_CCW);
     Wind_SetSpeed(0);
+    Buzzer_PlayMelody(MELODY_STARTUP);
 }
 
 char buffer[40];
 void process_0(void){
-    Buzzer_PlayMelody(MELODY_STARTUP);
+
     servo_set_angle(SERVO_1, 50);
     servo_set_angle(SERVO_2, 225);
     while(1){
@@ -83,7 +87,13 @@ void process_0(void){
 
 void process_1(void){
     yaw_ramp_set_goal(18000,true);
+    for(int i = 0 ; i < 64 ; i+=1){
+        SetMoveParameters(-i,0,0,false,true);
+        HAL_Delay(1);
+    }
+
     while(yaw_ramp_is_active());
+    SetMoveParameters(0,0,0,true,false);
     Speed_Control(64,0,0,false);
     Start_Line_Follow();
     while(1){
