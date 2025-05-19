@@ -54,9 +54,9 @@ void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_2|GPIO_PIN_3, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_14|WIND_IN1_Pin, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(WIND_IN1_GPIO_Port, WIND_IN1_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : PAPin PAPin PAPin PAPin */
+  /*Configure GPIO pins : K1_Pin K2_Pin K3_Pin K4_Pin */
   GPIO_InitStruct.Pin = K1_Pin|K2_Pin|K3_Pin|K4_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_IT_RISING;
   GPIO_InitStruct.Pull = GPIO_PULLUP;
@@ -69,12 +69,12 @@ void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : PA14 PAPin */
-  GPIO_InitStruct.Pin = GPIO_PIN_14|WIND_IN1_Pin;
+  /*Configure GPIO pin : WIND_IN1_Pin */
+  GPIO_InitStruct.Pin = WIND_IN1_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  HAL_GPIO_Init(WIND_IN1_GPIO_Port, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI4_IRQn, 11, 0);

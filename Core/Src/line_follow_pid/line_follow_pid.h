@@ -29,6 +29,7 @@ void Line_Follow_PID_Control(bool use_ramp);
  * @return true 表示已到达终点
  */
 bool Line_Follow_PID_IsFinished(void);
+void Remake_reached_end_flag(void);
 extern bool Line_Follow_On;
 extern int32_t yaw_goal;
 void Start_Line_Follow(void);

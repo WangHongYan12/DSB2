@@ -43,6 +43,9 @@ void Wind_Init(void)
     /* 关闭 SWJ（保险起见） */
     //__HAL_AFIO_REMAP_SWJ_DISABLE();
     __HAL_AFIO_REMAP_SWJ_NOJTAG();
+    __HAL_RCC_AFIO_CLK_ENABLE();
+    __HAL_AFIO_REMAP_SWJ_NOJTAG(); // 保留 SWD
+
     /* 关闭输出脚，防止突跳 */
     HAL_GPIO_WritePin(GPIOA, GPIO_PIN_15 | GPIO_PIN_14, GPIO_PIN_RESET);
 

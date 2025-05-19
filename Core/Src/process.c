@@ -18,6 +18,8 @@
 //
 // Created by 王泓俨 on 25-5-15.
 //
+
+int target_position = 6;
 void process_Init(void){
     HAL_TIM_Base_Start_IT(&htim6);
     HAL_TIM_Base_Start_IT(&htim7);
@@ -96,9 +98,114 @@ void process_1(void){
     SetMoveParameters(0,0,0,true,false);
     Speed_Control(64,0,0,false);
     Start_Line_Follow();
+    while(motor_sum_odometers_x < 12000){}
+    Remake_reached_end_flag();
     while(1){
         if(Line_Follow_PID_IsFinished()){
             Stop_Line_Follow();
+            break;
         }
+    }
+}
+
+void process_2(void){
+    yaw_ramp_set_goal(9000,true);
+    HAL_Delay(500);
+    Buzzer_PlayMelody(MELODY_PIRATES);
+}
+
+void process_3(void){
+    switch(target_position){
+        case 1:
+            yaw_ramp_set_goal(0,true);
+            for(int i = 0 ; i < 64 ; i++){
+                SetMoveParameters(-i,0,0,false,true);
+            }
+            HAL_Delay(2500);
+            SetMoveParameters(0,0,0,false,false);
+            Speed_Control(-64,0,0,true);
+            HAL_Delay(1500);
+            Speed_Control(0,0,0,true);
+            HAL_Delay(500);
+            Speed_Control(0,-100,0,true);
+            HAL_Delay(1200);
+            Speed_Control(0,0,0,true);
+            break;
+        case 2:
+            yaw_ramp_set_goal(0,true);
+            for(int i = 0 ; i < 64 ; i++){
+                SetMoveParameters(-i,0,0,false,true);
+            }
+            HAL_Delay(2500);
+            SetMoveParameters(0,0,0,false,false);
+            Speed_Control(-64,0,0,true);
+            HAL_Delay(1500);
+            Speed_Control(0,0,0,true);
+            HAL_Delay(500);
+            Speed_Control(0,-100,0,true);
+            HAL_Delay(3400);
+            Speed_Control(0,0,0,true);
+            break;
+        case 3:
+            yaw_ramp_set_goal(0,true);
+            for(int i = 0 ; i < 64 ; i++){
+                SetMoveParameters(-i,0,0,false,true);
+            }
+            HAL_Delay(2500);
+            SetMoveParameters(0,0,0,false,false);
+            Speed_Control(-64,0,0,true);
+            HAL_Delay(1500);
+            Speed_Control(0,0,0,true);
+            HAL_Delay(500);
+            Speed_Control(0,-100,0,true);
+            HAL_Delay(5600);
+            Speed_Control(0,0,0,true);
+            break;
+        case 4:
+            yaw_ramp_set_goal(18000,true);
+            for(int i = 0 ; i < 64 ; i++){
+                SetMoveParameters(-i,0,0,false,true);
+            }
+            HAL_Delay(2500);
+            SetMoveParameters(0,0,0,false,false);
+            Speed_Control(-64,0,0,true);
+            HAL_Delay(700);
+            Speed_Control(0,0,0,true);
+            HAL_Delay(500);
+            Speed_Control(0,100,0,true);
+            HAL_Delay(1200);
+            Speed_Control(0,0,0,true);
+            break;
+        case 5:
+            yaw_ramp_set_goal(18000,true);
+            for(int i = 0 ; i < 64 ; i++){
+                SetMoveParameters(-i,0,0,false,true);
+            }
+            HAL_Delay(2500);
+            SetMoveParameters(0,0,0,false,false);
+            Speed_Control(-64,0,0,true);
+            HAL_Delay(700);
+            Speed_Control(0,0,0,true);
+            HAL_Delay(500);
+            Speed_Control(0,100,0,true);
+            HAL_Delay(3400);
+            Speed_Control(0,0,0,true);
+            break;
+        case 6:
+            yaw_ramp_set_goal(18000,true);
+            for(int i = 0 ; i < 64 ; i++){
+                SetMoveParameters(-i,0,0,false,true);
+            }
+            HAL_Delay(2500);
+            SetMoveParameters(0,0,0,false,false);
+            Speed_Control(-64,0,0,true);
+            HAL_Delay(700);
+            Speed_Control(0,0,0,true);
+            HAL_Delay(500);
+            Speed_Control(0,100,0,true);
+            HAL_Delay(5600);
+            Speed_Control(0,0,0,true);
+            break;
+
     }
 }

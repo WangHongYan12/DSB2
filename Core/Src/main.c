@@ -82,6 +82,7 @@ void SystemClock_Config(void);
   */
 int main(void)
 {
+
   /* USER CODE BEGIN 1 */
 
   /* USER CODE END 1 */
@@ -124,13 +125,15 @@ int main(void)
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
+    char buffer[20];
     process_0();
     process_1();
-
-    char buffer[20];
+    process_2();
+    process_3();
 
   while (1)
   {
+
 
     /* USER CODE END WHILE */
 

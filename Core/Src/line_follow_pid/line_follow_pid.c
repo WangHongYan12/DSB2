@@ -49,6 +49,10 @@ bool Line_Follow_PID_IsFinished(void)
     return reached_end_flag;
 }
 
+void Remake_reached_end_flag(void){
+    reached_end_flag = false;
+}
+
 static void Line_nspection_data_synthesis(void)
 {
     sum_weight = 0;
@@ -101,6 +105,8 @@ void Start_Line_Follow(void){
 
 void Stop_Line_Follow(void){
     Line_Follow_On = false;
+    Speed_Control(0,0,0,true);
+    HAL_Delay(300);
     Speed_Control(0,0,0,false);
 }
 /* =============================================================================

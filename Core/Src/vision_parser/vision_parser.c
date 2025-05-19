@@ -6,6 +6,7 @@
  */
 
 #include "vision_parser.h"
+#include "../buzzer/buzzer.h"
 #include <string.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -46,7 +47,7 @@ void vision_uart_init(void) {
  * @param huart 串口句柄
  */
 void Vision_RxISR(void) {
-
+    i2++;
     if (vision_uart_rx_byte == VISION_FRAME_HEAD) {
         vision_frame_index = 0;
         vision_frame_buffer[vision_frame_index++] = vision_uart_rx_byte;
