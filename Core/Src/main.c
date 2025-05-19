@@ -125,20 +125,13 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
     process_0();
-    //process_1();
+    process_1();
 
     char buffer[20];
-    yaw_ramp_set_goal(18000,true);
-    for(int i = 0 ; i < 64 ; i+=1){
-        SetMoveParameters(-i,0,0,false,true);
-        HAL_Delay(1);
-    }
-    while(yaw_ramp_is_active());
-    SetMoveParameters(0,0,0,false,true);
-    HAL_Delay(20);
-    SetMoveParameters(0,0,0,false,false);
+
   while (1)
   {
+
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

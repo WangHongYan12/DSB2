@@ -101,7 +101,7 @@ void Start_Line_Follow(void){
 
 void Stop_Line_Follow(void){
     Line_Follow_On = false;
-    Speed_Control(0,0,0,true);
+    Speed_Control(0,0,0,false);
 }
 /* =============================================================================
  *  使用示例：主循环调用
