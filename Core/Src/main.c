@@ -31,6 +31,7 @@
 #include "oled\oled.h"
 #include "motor_rx\motor_rx.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include "linetracker_uart5/linetracker_uart5.h"
 #include "wind\wind.h"
 #include "key/key.h"
@@ -128,16 +129,14 @@ int main(void)
   /* USER CODE BEGIN WHILE */
     char buffer[20];
     Wind_SetSpeed(0);
-    vision_alignment_set_parameters(-0.25f, 0.0f, 0.0f, 320, 80, 10);
-    while (1) {
-        vision_alignment_update(); // 控制逻辑周期运行
-    }
+
+
 
     process_0();
     process_1();
     process_2();
     process_3();
-
+    process_4();
   while (1)
   {
 

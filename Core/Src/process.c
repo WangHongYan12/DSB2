@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "buzzer/buzzer.h"
 #include "oled/oled.h"
 #include "motor_rx/motor_rx.h"
@@ -14,6 +15,7 @@
 #include "vision_parser/vision_parser.h"
 #include "wind/wind.h"
 #include "move_while_rotating/move_while_rotating.h"
+#include "vision_parser/vision_align.h"
 
 //
 // Created by 王泓俨 on 25-5-15.
@@ -206,6 +208,31 @@ void process_3(void){
             HAL_Delay(5600);
             Speed_Control(0,0,0,true);
             break;
-
     }
+}
+void process_4(void){
+    vision_alignment_set_x_params(-0.3f, 0.0f, 0.0f, 360, 80, 5);
+    vision_alignment_set_y_params(0.2f, 0.0f, 0.0f, 220, 80, 5);
+    while (1) {
+        vision_alignment_update();  // 双轴控制
+        OLED_NewFrame();
+        OLED_PrintString(64, 40, "速度", &font12x12, OLED_COLOR_NORMAL);
+        snprintf(buffer, sizeof(buffer), "%d",vision_x_coord);
+        OLED_PrintASCIIString(88, 40, buffer, &afont12x6, OLED_COLOR_NORMAL);
+
+        OLED_PrintString(64, 52, "线数", &font12x12, OLED_COLOR_NORMAL);
+        snprintf(buffer, sizeof(buffer), "%d",vision_y_coord);
+        OLED_PrintASCIIString(100, 52, buffer, &afont12x6, OLED_COLOR_NORMAL);
+        OLED_ShowFrame();
+        if( (abs(vision_x_coord - 360) <= 5) && (abs(vision_y_coord - 220) <= 5) ){
+            break;
+        }
+    }
+    Speed_Control(-15,0,0,true);
+    HAL_Delay(3000);
+    Speed_Control(0,0,0,true);
+    Wind_SetSpeed(1000);
+    Buzzer_PlayMelody(MELODY_STARTUP);
+    HAL_Delay(7000);
+    Wind_SetSpeed(0);
 }
