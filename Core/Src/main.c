@@ -42,6 +42,7 @@
 #include "process.h"
 #include "vision_parser/vision_parser.h"
 #include "move_while_rotating/move_while_rotating.h"
+#include "vision_parser/vision_align.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -126,6 +127,12 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
     char buffer[20];
+    Wind_SetSpeed(0);
+    vision_alignment_set_parameters(-0.25f, 0.0f, 0.0f, 320, 80, 10);
+    while (1) {
+        vision_alignment_update(); // 控制逻辑周期运行
+    }
+
     process_0();
     process_1();
     process_2();

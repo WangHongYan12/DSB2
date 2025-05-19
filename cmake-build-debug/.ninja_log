@@ -1,10 +1,11 @@
 # ninja log v6
 13	215	7693431594641072	CMakeFiles/DSB2.elf.dir/Core/Src/i2c.c.obj	b75fb4b142282865
+7	101	7693597619981527	CMakeFiles/DSB2.elf.dir/Core/Src/vision_parser/vision_align.c.obj	31533a35d815d117
 25	223	7693431594766247	CMakeFiles/DSB2.elf.dir/Core/Src/linetracker_uart5/linetracker_uart5.c.obj	d679fa0007d8c8b3
 219	387	7693431596717037	CMakeFiles/DSB2.elf.dir/Core/Src/system_stm32f1xx.c.obj	eea6b30c90106624
 56	235	7693431595080051	CMakeFiles/DSB2.elf.dir/Core/Src/servo_control/servo_control.c.obj	e1ce4c3d70bd7fe8
-238	414	7693431596907034	CMakeFiles/DSB2.elf.dir/Core/Src/wind/wind.c.obj	648c81504125d61a
 35	227	7693431594866253	CMakeFiles/DSB2.elf.dir/Core/Src/move_while_rotating/move_while_rotating.c.obj	1bfdf994f2b2fd81
+238	414	7693431596907034	CMakeFiles/DSB2.elf.dir/Core/Src/wind/wind.c.obj	648c81504125d61a
 432	678	7693431598843213	CMakeFiles/DSB2.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_rcc.c.obj	7051f340ad02a655
 10	204	7693431594621080	CMakeFiles/DSB2.elf.dir/Core/Src/gpio.c.obj	f6dc0ac5bcf2a11d
 235	445	7693431596867039	CMakeFiles/DSB2.elf.dir/Core/Src/vision_parser/vision_parser.c.obj	604bf0b8c7bc7310
@@ -14,14 +15,14 @@
 5	219	7693431594571044	CMakeFiles/DSB2.elf.dir/Core/Src/buzzer/buzzer.c.obj	312714bef572cdb2
 38	238	7693431594900021	CMakeFiles/DSB2.elf.dir/Core/Src/oled/font.c.obj	1642ea1236c48b01
 445	1007	7693431598975035	CMakeFiles/DSB2.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim.c.obj	c8057c8d268404d8
-28	255	7693431594796259	CMakeFiles/DSB2.elf.dir/Core/Src/main.c.obj	910b668af8999df7
+4	108	7693597619950452	CMakeFiles/DSB2.elf.dir/Core/Src/main.c.obj	910b668af8999df7
 17	211	7693431594689723	CMakeFiles/DSB2.elf.dir/Core/Src/imu_uart4/imu_uart4.c.obj	5816d3519fff2238
-4	100	7693577116094373	CMakeFiles/DSB2.elf.dir/Core/Src/process.c.obj	978cf585556e5593
+4	96	7693578152810764	CMakeFiles/DSB2.elf.dir/Core/Src/process.c.obj	978cf585556e5593
 50	429	7693431595020048	CMakeFiles/DSB2.elf.dir/Core/Src/oled/oled.c.obj	aee9ff0a81eba00d
 215	333	7693431596667037	CMakeFiles/DSB2.elf.dir/Core/Src/sysmem.c.obj	41853940003dc8a2
 287	391	7693431597385139	CMakeFiles/DSB2.elf.dir/Core/Startup/startup_stm32f103rctx.s.obj	e2709ad7839f9981
 204	348	7693431596567037	CMakeFiles/DSB2.elf.dir/Core/Src/stm32f1xx_hal_msp.c.obj	a535775fb7542275
-101	240	7693577117062171	DSB2.elf	c9765097031f3669
+85	245	7693592459122151	DSB2.elf	c9765097031f3669
 259	401	7693431597105142	CMakeFiles/DSB2.elf.dir/Core/Src/yaw_pid_control/yaw_ramp.c.obj	393e43b306f3b7f0
 227	384	7693431596787034	CMakeFiles/DSB2.elf.dir/Core/Src/uart2_motor_frame_tx/uart2_motor_frame_tx.c.obj	e1884bda18698627
 255	438	7693431597075144	CMakeFiles/DSB2.elf.dir/Core/Src/yaw_pid_control/yaw_pid_control.c.obj	6911042c1be11f9f
@@ -42,5 +43,3 @@
 414	1035	7693431598661443	CMakeFiles/DSB2.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_i2c.c.obj	749393192e697ab7
 550	843	7693431600025024	CMakeFiles/DSB2.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_tim_ex.c.obj	1e8ed2a2e830c3f8
 597	933	7693431600495030	CMakeFiles/DSB2.elf.dir/Drivers/STM32F1xx_HAL_Driver/Src/stm32f1xx_hal_uart.c.obj	ddcf5e68b0ed3b53
-4	96	7693578152810764	CMakeFiles/DSB2.elf.dir/Core/Src/process.c.obj	978cf585556e5593
-96	259	7693578153722082	DSB2.elf	c9765097031f3669
