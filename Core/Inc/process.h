@@ -15,4 +15,6 @@ void process_2(void);
 void process_3(void);
 
 void process_4(void);
+
+void process_5(void);
 #endif /* __PROCESS_H */

@@ -128,15 +128,14 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
     char buffer[20];
-    Wind_SetSpeed(0);
-
-
-
+    servo_set_angle(SERVO_1, 60);
+    servo_set_angle(SERVO_2, 225);
     process_0();
     process_1();
     process_2();
     process_3();
     process_4();
+    process_5();
   while (1)
   {
 

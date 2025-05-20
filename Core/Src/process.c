@@ -21,7 +21,7 @@
 // Created by 王泓俨 on 25-5-15.
 //
 
-int target_position = 6;
+int target_position = 3;
 void process_Init(void){
     HAL_TIM_Base_Start_IT(&htim6);
     HAL_TIM_Base_Start_IT(&htim7);
@@ -63,7 +63,7 @@ void process_0(void){
     OLED_PrintString(24, 52, "发车", &font12x12, OLED_COLOR_REVERSED);
 
     OLED_PrintString(64, 16, "里程", &font12x12, OLED_COLOR_NORMAL);
-    snprintf(buffer, sizeof(buffer), "%d",motor_sum_odometers_x);
+    snprintf(buffer, sizeof(buffer), "%d",target_position);
     OLED_PrintASCIIString(100, 16, buffer, &afont12x6, OLED_COLOR_NORMAL);
     OLED_PrintString(64, 28, "角度", &font12x12, OLED_COLOR_NORMAL);
     snprintf(buffer, sizeof(buffer), "%.2f",(float)imu_yaw_cdeg/100.0f);
@@ -79,27 +79,34 @@ void process_0(void){
     OLED_ShowFrame();
 
         if(Key_GetClick(KEY1)){
-            yaw_pid_control_on = true;}
+            target_position++;
+            if(target_position == 7){target_position = 1;}}
         if (Key_GetClick(KEY2)){
             IMU_ResetHeading();}
         if (Key_GetClick(KEY3)){
             Buzzer_PlayMelody(MELODY_MAX);}
         if (Key_GetClick(KEY4)){
+            yaw_pid_control_on = true;
+            HAL_Delay(200);
             break; }
     }
 }
 
 void process_1(void){
     yaw_ramp_set_goal(18000,true);
+    servo_set_angle(SERVO_1, 50);
+    servo_set_angle(SERVO_2, 130);
     for(int i = 0 ; i < 64 ; i+=1){
         SetMoveParameters(-i,0,0,false,true);
         HAL_Delay(1);
     }
-
     while(yaw_ramp_is_active());
     SetMoveParameters(0,0,0,true,false);
     Speed_Control(64,0,0,false);
     Start_Line_Follow();
+    while(motor_sum_odometers_x < 4000){}
+    servo_set_angle(SERVO_1, 50);
+    servo_set_angle(SERVO_2, 270);
     while(motor_sum_odometers_x < 12000){}
     Remake_reached_end_flag();
     while(1){
@@ -111,6 +118,8 @@ void process_1(void){
 }
 
 void process_2(void){
+    servo_set_angle(SERVO_1, 50);
+    servo_set_angle(SERVO_2, 225);
     yaw_ramp_set_goal(9000,true);
     HAL_Delay(500);
     Buzzer_PlayMelody(MELODY_PIRATES);
@@ -126,7 +135,7 @@ void process_3(void){
             HAL_Delay(2500);
             SetMoveParameters(0,0,0,false,false);
             Speed_Control(-64,0,0,true);
-            HAL_Delay(1500);
+            HAL_Delay(1200);
             Speed_Control(0,0,0,true);
             HAL_Delay(500);
             Speed_Control(0,-100,0,true);
@@ -141,7 +150,7 @@ void process_3(void){
             HAL_Delay(2500);
             SetMoveParameters(0,0,0,false,false);
             Speed_Control(-64,0,0,true);
-            HAL_Delay(1500);
+            HAL_Delay(1200);
             Speed_Control(0,0,0,true);
             HAL_Delay(500);
             Speed_Control(0,-100,0,true);
@@ -156,11 +165,11 @@ void process_3(void){
             HAL_Delay(2500);
             SetMoveParameters(0,0,0,false,false);
             Speed_Control(-64,0,0,true);
-            HAL_Delay(1500);
+            HAL_Delay(1200);
             Speed_Control(0,0,0,true);
             HAL_Delay(500);
             Speed_Control(0,-100,0,true);
-            HAL_Delay(5600);
+            HAL_Delay(6000);
             Speed_Control(0,0,0,true);
             break;
         case 4:
@@ -205,14 +214,14 @@ void process_3(void){
             Speed_Control(0,0,0,true);
             HAL_Delay(500);
             Speed_Control(0,100,0,true);
-            HAL_Delay(5600);
+            HAL_Delay(6000);
             Speed_Control(0,0,0,true);
             break;
     }
 }
 void process_4(void){
-    vision_alignment_set_x_params(-0.3f, 0.0f, 0.0f, 360, 80, 5);
-    vision_alignment_set_y_params(0.2f, 0.0f, 0.0f, 220, 80, 5);
+    vision_alignment_set_x_params(-0.3f, 0.0f, 0.0f, 305, 80, 3);
+    vision_alignment_set_y_params(0.2f, 0.0f, 0.0f, 210, 80, 3);
     while (1) {
         vision_alignment_update();  // 双轴控制
         OLED_NewFrame();
@@ -224,15 +233,104 @@ void process_4(void){
         snprintf(buffer, sizeof(buffer), "%d",vision_y_coord);
         OLED_PrintASCIIString(100, 52, buffer, &afont12x6, OLED_COLOR_NORMAL);
         OLED_ShowFrame();
-        if( (abs(vision_x_coord - 360) <= 5) && (abs(vision_y_coord - 220) <= 5) ){
+        if( (abs(vision_x_coord - 305) <= 5) && (abs(vision_y_coord - 210) <= 5) ){
             break;
         }
     }
-    Speed_Control(-15,0,0,true);
-    HAL_Delay(3000);
+    Speed_Control(-30,0,0,true);
+    HAL_Delay(1800);
     Speed_Control(0,0,0,true);
     Wind_SetSpeed(1000);
-    Buzzer_PlayMelody(MELODY_STARTUP);
-    HAL_Delay(7000);
+    Buzzer_PlayMelody(MELODY_MAX);
+    HAL_Delay(5000);
     Wind_SetSpeed(0);
+}
+
+void process_5(void){
+    Speed_Control(30,0,0,true);
+    HAL_Delay(1800);
+    Speed_Control(0,0,0,true);
+    HAL_Delay(50);
+    switch(target_position){
+        case 1:
+            Speed_Control(0,100,0,true);
+            HAL_Delay(1200);
+            Speed_Control(0,0,0,true);
+            HAL_Delay(500);
+            Speed_Control(64,0,0,true);
+            HAL_Delay(1200);
+            yaw_ramp_set_goal(27000,true);
+            SetMoveParameters(64,0,0,false,true);
+            HAL_Delay(3000);
+            SetMoveParameters(0,0,0,false,false);
+            Speed_Control(0,0,0,true);
+            break;
+        case 2:
+            Speed_Control(0,100,0,true);
+            HAL_Delay(3400);
+            Speed_Control(0,0,0,true);
+            HAL_Delay(500);
+            Speed_Control(64,0,0,true);
+            HAL_Delay(1200);
+            yaw_ramp_set_goal(27000,true);
+            SetMoveParameters(64,0,0,false,true);
+            HAL_Delay(3000);
+            SetMoveParameters(0,0,0,false,false);
+            Speed_Control(0,0,0,true);
+            break;
+        case 3:
+            Speed_Control(0,100,0,true);
+            HAL_Delay(5500);
+            Speed_Control(0,0,0,true);
+            HAL_Delay(500);
+            Speed_Control(64,0,0,true);
+            HAL_Delay(1200);
+            yaw_ramp_set_goal(27000,true);
+            SetMoveParameters(64,0,0,false,true);
+            HAL_Delay(3000);
+            SetMoveParameters(0,0,0,false,false);
+            Speed_Control(0,0,0,true);
+            break;
+        case 4:
+            Speed_Control(0,-100,0,true);
+            HAL_Delay(1200);
+            Speed_Control(0,0,0,true);
+            HAL_Delay(500);
+            Speed_Control(-64,0,0,true);
+            HAL_Delay(700);
+            yaw_ramp_set_goal(27000,true);
+            SetMoveParameters(64,0,0,false,true);
+            HAL_Delay(2500);
+            SetMoveParameters(0,0,0,false,false);
+            Speed_Control(0,0,0,true);
+
+            break;
+        case 5:
+            Speed_Control(0,-100,0,true);
+            HAL_Delay(3100);
+            Speed_Control(0,0,0,true);
+            HAL_Delay(500);
+            Speed_Control(-64,0,0,true);
+            HAL_Delay(700);
+            yaw_ramp_set_goal(27000,true);
+            SetMoveParameters(64,0,0,false,true);
+            HAL_Delay(2500);
+            SetMoveParameters(0,0,0,false,false);
+            Speed_Control(0,0,0,true);
+            break;
+        case 6:
+            Speed_Control(0,-100,0,true);
+            HAL_Delay(5500);
+            Speed_Control(0,0,0,true);
+            HAL_Delay(500);
+            Speed_Control(-64,0,0,true);
+            HAL_Delay(700);
+            yaw_ramp_set_goal(27000,true);
+            SetMoveParameters(64,0,0,false,true);
+            HAL_Delay(2500);
+            SetMoveParameters(0,0,0,false,false);
+            Speed_Control(0,0,0,true);
+            break;
+    }
+
 }
