@@ -113,4 +113,4 @@ void MotorFrame_CheckAndSend(void)
 }
 
 void Encoder_Reset(void){
-    HAL_UART_Transmit(&huart2, "!@!", 3, 10);}
+    HAL_UART_Transmit(&huart2, "!@!", 3, HAL_MAX_DELAY);}

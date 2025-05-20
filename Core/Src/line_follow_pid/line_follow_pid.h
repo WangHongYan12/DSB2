@@ -34,4 +34,6 @@ extern bool Line_Follow_On;
 extern int32_t yaw_goal;
 void Start_Line_Follow(void);
 void Stop_Line_Follow(void);
+void Start_Line_Follow_Fast(void);
+void Stop_Line_Follow_Fast(void);
 #endif /* __LINE_FOLLOW_PID_H */

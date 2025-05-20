@@ -109,6 +109,20 @@ void Stop_Line_Follow(void){
     HAL_Delay(300);
     Speed_Control(0,0,0,false);
 }
+
+void Start_Line_Follow_Fast(void){
+    yaw_goal = imu_yaw_cdeg;
+    Line_Follow_On = true;
+    Speed_Control(100,0,0,true);
+    yaw_pid_control_on = true;
+}
+
+void Stop_Line_Follow_Fast(void){
+    Line_Follow_On = false;
+    Speed_Control(0,0,0,true);
+    HAL_Delay(300);
+    Speed_Control(0,0,0,true);
+}
 /* =============================================================================
  *  使用示例：主循环调用
  * =============================================================================
