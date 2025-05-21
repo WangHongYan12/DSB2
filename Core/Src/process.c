@@ -137,7 +137,7 @@ void process_3(void){
             Speed_Control(-64,0,0,true);
             HAL_Delay(1200);
             Speed_Control(0,0,0,true);
-            HAL_Delay(500);
+            //HAL_Delay(500);
             Speed_Control(0,-100,0,true);
             HAL_Delay(1200);
             yaw_123 = 0;
@@ -153,7 +153,7 @@ void process_3(void){
             Speed_Control(-64,0,0,true);
             HAL_Delay(1200);
             Speed_Control(0,0,0,true);
-            HAL_Delay(500);
+            //HAL_Delay(500);
             Speed_Control(0,-100,0,true);
             HAL_Delay(3400);
             Speed_Control(0,0,0,true);
@@ -169,7 +169,7 @@ void process_3(void){
             Speed_Control(-64,0,0,true);
             HAL_Delay(1200);
             Speed_Control(0,0,0,true);
-            HAL_Delay(500);
+            //HAL_Delay(500);
             Speed_Control(0,-100,0,true);
             HAL_Delay(6000);
             Speed_Control(0,0,0,true);
@@ -185,7 +185,7 @@ void process_3(void){
             Speed_Control(-64,0,0,true);
             HAL_Delay(700);
             Speed_Control(0,0,0,true);
-            HAL_Delay(500);
+            //HAL_Delay(500);
             Speed_Control(0,100,0,true);
             HAL_Delay(1200);
             Speed_Control(0,0,0,true);
@@ -201,7 +201,7 @@ void process_3(void){
             Speed_Control(-64,0,0,true);
             HAL_Delay(700);
             Speed_Control(0,0,0,true);
-            HAL_Delay(500);
+            //HAL_Delay(500);
             Speed_Control(0,100,0,true);
             HAL_Delay(3400);
             Speed_Control(0,0,0,true);
@@ -217,7 +217,7 @@ void process_3(void){
             Speed_Control(-64,0,0,true);
             HAL_Delay(700);
             Speed_Control(0,0,0,true);
-            HAL_Delay(500);
+            //HAL_Delay(500);
             Speed_Control(0,100,0,true);
             HAL_Delay(6000);
             Speed_Control(0,0,0,true);
@@ -246,7 +246,7 @@ void process_4(void){
     Speed_Control(-30,0,0,true);
     HAL_Delay(1800);
     Speed_Control(0,0,0,true);
-    Wind_SetSpeed(1000);
+    //Wind_SetSpeed(1000);
     HAL_Delay(1000);
     Buzzer_PlayTone(TONE_DESCEND);
     HAL_Delay(1000);
@@ -258,16 +258,16 @@ void process_4(void){
 }
 
 void process_5(void){
-    Speed_Control(30,0,0,true);
-    HAL_Delay(1800);
-    Speed_Control(0,0,0,true);
+    Speed_Control(60,0,0,false);
+    HAL_Delay(900);
+    Speed_Control(0,0,0,false);
     HAL_Delay(50);
     switch(target_position){
         case 1:
             Speed_Control(0,100,0,true);
             HAL_Delay(1200);
             Speed_Control(0,0,0,true);
-            HAL_Delay(500);
+            //HAL_Delay(500);
             Speed_Control(64,0,0,true);
             HAL_Delay(1200);
             yaw_ramp_set_goal(27000,true);
@@ -280,7 +280,7 @@ void process_5(void){
             Speed_Control(0,100,0,true);
             HAL_Delay(3400);
             Speed_Control(0,0,0,true);
-            HAL_Delay(500);
+            //HAL_Delay(500);
             Speed_Control(64,0,0,true);
             HAL_Delay(1200);
             yaw_ramp_set_goal(27000,true);
@@ -293,7 +293,7 @@ void process_5(void){
             Speed_Control(0,100,0,true);
             HAL_Delay(5500);
             Speed_Control(0,0,0,true);
-            HAL_Delay(500);
+            //HAL_Delay(500);
             Speed_Control(64,0,0,true);
             HAL_Delay(1200);
             yaw_ramp_set_goal(27000,true);
@@ -306,7 +306,7 @@ void process_5(void){
             Speed_Control(0,-100,0,true);
             HAL_Delay(1200);
             Speed_Control(0,0,0,true);
-            HAL_Delay(500);
+            //HAL_Delay(500);
             Speed_Control(-64,0,0,true);
             HAL_Delay(700);
             yaw_ramp_set_goal(27000,true);
@@ -319,7 +319,7 @@ void process_5(void){
             Speed_Control(0,-100,0,true);
             HAL_Delay(3100);
             Speed_Control(0,0,0,true);
-            HAL_Delay(500);
+            //HAL_Delay(500);
             Speed_Control(-64,0,0,true);
             HAL_Delay(700);
             yaw_ramp_set_goal(27000,true);
@@ -332,7 +332,7 @@ void process_5(void){
             Speed_Control(0,-100,0,true);
             HAL_Delay(5500);
             Speed_Control(0,0,0,true);
-            HAL_Delay(500);
+            //HAL_Delay(500);
             Speed_Control(-64,0,0,true);
             HAL_Delay(700);
             yaw_ramp_set_goal(27000,true);
