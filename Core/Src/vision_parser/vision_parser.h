@@ -39,6 +39,8 @@ void vision_uart_init(void);
 void vision_frame_parse(void);
 
 void Vision_RxISR(void);
+
+extern uint8_t version_check;
 #ifdef __cplusplus
 }
 #endif

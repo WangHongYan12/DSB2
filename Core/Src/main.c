@@ -122,19 +122,32 @@ int main(void)
   MX_TIM2_Init();
   MX_TIM5_Init();
   /* USER CODE BEGIN 2 */
+  ///初始化状态：初始化完成蜂鸣器响应
     process_Init();
   /* USER CODE END 2 */
 
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
     char buffer[20];
-
+    ///process0：等待发车状态
     process_0();
+
+    ///process1：开始巡线
     process_1();
+
+    ///process:2：巡线终点停车并蜂鸣器响应
     process_2();
+
+    ///process3: 前往目标位置
     process_3();
+
+    ///process4: 视觉校准目标
     process_4();
+
+    ///process5：返回巡线终点
     process_5();
+
+    ///process6：巡线，返回发车区
     process_6();
   while (1)
   {

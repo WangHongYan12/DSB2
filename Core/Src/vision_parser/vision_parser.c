@@ -32,6 +32,7 @@ uint16_t vision_x_coord = 0;
 /// 当前帧解析出的 Y 坐标
 uint16_t vision_y_coord = 0;
 
+uint8_t version_check = 0;
 /// 使用串口 USART3 与视觉模块通信
 extern UART_HandleTypeDef huart3;
 
@@ -73,6 +74,7 @@ void Vision_RxISR(void) {
  * @note  仅当 vision_frame_ready 被置位时执行解析
  */
 void vision_frame_parse(void) {
+    version_check = 1;
     if (!vision_frame_ready) return;
     vision_frame_ready = 0;
 
