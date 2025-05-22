@@ -45,7 +45,6 @@ void process_Init(void){
 
 char buffer[40];
 void process_0(void){
-
     servo_set_angle(SERVO_1, 50);
     servo_set_angle(SERVO_2, 225);
     while(1){
@@ -226,8 +225,8 @@ void process_3(void){
     }
 }
 void process_4(void){
-    vision_alignment_set_x_params(-0.3f, 0.0f, 0.0f, 325, 80, 3);
-    vision_alignment_set_y_params(0.2f, 0.0f, 0.0f, 210, 80, 3);
+    vision_alignment_set_x_params(-0.5f, 0.0f, 0.0f, 325, 80, 3);
+    vision_alignment_set_y_params(0.4f, 0.0f, 0.0f, 210, 80, 3);
     while (1) {
         vision_alignment_update();  // 双轴控制
         OLED_NewFrame();
@@ -342,7 +341,7 @@ void process_5(void){
             Speed_Control(0,0,0,true);
             break;
     }
-    HAL_Delay(300);
+    HAL_Delay(700);
 }
 
 void process_6(void) {

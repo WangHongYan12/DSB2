@@ -128,8 +128,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
     char buffer[20];
-    servo_set_angle(SERVO_1, 60);
-    servo_set_angle(SERVO_2, 225);
+
     process_0();
     process_1();
     process_2();
@@ -139,34 +138,6 @@ int main(void)
     process_6();
   while (1)
   {
-      OLED_NewFrame();
-      OLED_PrintString(4, 0, "电赛智能车 鸭敏电组", &font12x12, OLED_COLOR_REVERSED);
-      OLED_DrawLine(0,14,128,14,OLED_COLOR_NORMAL);
-      OLED_PrintASCIIString(0, 16, "KEY1:", &afont12x6, OLED_COLOR_NORMAL);
-      OLED_PrintASCIIString(0, 28, "KEY2:", &afont12x6, OLED_COLOR_NORMAL);
-      OLED_PrintASCIIString(0, 40, "KEY3:", &afont12x6, OLED_COLOR_NORMAL);
-      OLED_PrintASCIIString(0, 52, "KEY4:", &afont12x6, OLED_COLOR_NORMAL);
-
-      OLED_PrintString(24, 16, "朝向环", &font12x12, OLED_COLOR_NORMAL);
-      OLED_PrintString(24, 28, "清零角", &font12x12, OLED_COLOR_NORMAL);
-      OLED_PrintString(24, 40, "", &font12x12, OLED_COLOR_NORMAL);
-      OLED_PrintString(24, 52, "发车", &font12x12, OLED_COLOR_REVERSED);
-
-      snprintf(buffer, sizeof(buffer), "%d",motor_sum_odometers_x);
-      OLED_PrintASCIIString(64, 16, buffer, &afont12x6, OLED_COLOR_NORMAL);
-      OLED_PrintString(64, 28, "角度", &font12x12, OLED_COLOR_NORMAL);
-      snprintf(buffer, sizeof(buffer), "%.2f",(float)imu_yaw_cdeg/100.0f);
-      OLED_PrintASCIIString(88, 28, buffer, &afont12x6, OLED_COLOR_NORMAL);
-
-      OLED_PrintString(64, 40, "速度", &font12x12, OLED_COLOR_NORMAL);
-      snprintf(buffer, sizeof(buffer), "%d",last_set_speed[1]);
-      OLED_PrintASCIIString(88, 40, buffer, &afont12x6, OLED_COLOR_NORMAL);
-
-      OLED_PrintString(64, 52, "线数", &font12x12, OLED_COLOR_NORMAL);
-      snprintf(buffer, sizeof(buffer), "%d",lt_digital[0]+lt_digital[1]+lt_digital[2]+lt_digital[3]+lt_digital[4]+lt_digital[5]+lt_digital[6]+lt_digital[7]);
-      OLED_PrintASCIIString(100, 52, buffer, &afont12x6, OLED_COLOR_NORMAL);
-      OLED_ShowFrame();
-
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */

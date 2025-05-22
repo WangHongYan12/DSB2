@@ -24,7 +24,6 @@ extern volatile int32_t motor_sum_odometers_x;
 extern volatile int32_t motor_sum_odometers_y;
 extern volatile int32_t motor_real_speed  [MOTOR_RX_NUM_AXES];
 extern volatile bool    motor_data_ready;          /* 解析完成置 1 */
-
 /* =========== 仅需 3 个外部函数 =========== */
 /* ①  初始化：在 MX_USART2_UART_Init() 之后调用一次 */
 void MotorRx_Init(void);
