@@ -129,6 +129,7 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
     char buffer[20];
+
     ///process0：等待发车状态
     process_0();
 

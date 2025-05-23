@@ -29,6 +29,7 @@ void process_Init(void){
 
     HAL_Delay(200);
     OLED_Init();
+
     MotorFrame_UART2_TxInit();
     Buzzer_Init();
     servo_init();
@@ -66,7 +67,7 @@ void process_0(void){
     snprintf(buffer, sizeof(buffer), "%d",target_position);
     OLED_PrintASCIIString(100, 16, buffer, &afont12x6, OLED_COLOR_NORMAL);
     OLED_PrintString(64, 28, "角度", &font12x12, OLED_COLOR_NORMAL);
-    snprintf(buffer, sizeof(buffer), "%.2f",(float)imu_yaw_cdeg/100.0f);
+        snprintf(buffer, sizeof(buffer), "%.2f", (float) imu_yaw_cdeg / 100.0f);
     OLED_PrintASCIIString(88, 28, buffer, &afont12x6, OLED_COLOR_NORMAL);
 
     OLED_PrintString(64, 40, "速度", &font12x12, OLED_COLOR_NORMAL);

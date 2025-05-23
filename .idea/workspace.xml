@@ -27,13 +27,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/main.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/main.c" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Core/Src/process.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/process.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/vision_parser/vision_parser.c" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/vision_parser/vision_parser.c" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Core/Src/vision_parser/vision_parser.h" beforeDir="false" afterPath="$PROJECT_DIR$/Core/Src/vision_parser/vision_parser.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_deps" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/.ninja_log" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DSB2.elf.dir/Core/Src/main.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DSB2.elf.dir/Core/Src/main.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DSB2.elf.dir/Core/Src/process.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DSB2.elf.dir/Core/Src/process.c.obj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DSB2.elf.dir/Core/Src/stm32f1xx_it.c.obj" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/CMakeFiles/DSB2.elf.dir/Core/Src/stm32f1xx_it.c.obj" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/DSB2.bin" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/DSB2.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/DSB2.elf" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/DSB2.elf" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/cmake-build-debug/DSB2.hex" beforeDir="false" afterPath="$PROJECT_DIR$/cmake-build-debug/DSB2.hex" afterDir="false" />
@@ -163,7 +160,7 @@
       <workItem from="1747656612784" duration="5803000" />
       <workItem from="1747716775090" duration="20198000" />
       <workItem from="1747814370385" duration="3985000" />
-      <workItem from="1747909247998" duration="2376000" />
+      <workItem from="1747909247998" duration="7060000" />
     </task>
     <task id="LOCAL-00001" summary="5/19">
       <option name="closed" value="true" />
@@ -221,7 +218,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747908154427</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="5/21">
+      <option name="closed" value="true" />
+      <created>1747911776801</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1747911776801</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -237,5 +242,12 @@
     <MESSAGE value="5/20" />
     <MESSAGE value="5/21" />
     <option name="LAST_COMMIT_MESSAGE" value="5/21" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <inline-watch fileUrl="file://$PROJECT_DIR$/Core/Src/process.c" line="69">
+        <watch expression="imu" language="ObjectiveC" />
+      </inline-watch>
+    </watches-manager>
   </component>
 </project>
